@@ -1,0 +1,143 @@
+:root {
+  color-scheme: light;
+  --ink: #1c1915;
+  --muted: #4a433c;
+  --line: #ddd4c8;
+  --paper: #f7f3ec;
+  --card: #fffdf9;
+  --accent: #0f4c46;
+  --accent-soft: #e5f1ef;
+  --warn: #6b3d12;
+  --warn-bg: #f8efe4;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Songti SC", "PingFang SC", "Noto Serif SC", serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+a, code {
+  overflow-wrap: anywhere;
+}
+
+a { color: var(--accent); }
+
+a:hover { text-decoration-thickness: 2px; }
+
+.skip {
+  position: absolute;
+  left: 0.75rem;
+  top: -3rem;
+  background: var(--ink);
+  color: white;
+  padding: 0.4rem 0.7rem;
+}
+
+.skip:focus { top: 0.75rem; }
+
+.banner {
+  background: var(--accent);
+  color: #f4fbfa;
+}
+
+.banner a { color: #f4fbfa; }
+
+.wrap {
+  width: min(44rem, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.banner .wrap,
+.site-footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.85rem;
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+}
+
+nav a { text-decoration: none; }
+
+nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 0.25rem; }
+
+main { padding-block: 2rem 3rem; }
+
+h1, h2, h3 {
+  font-family: "Avenir Next", "PingFang SC", "Noto Sans SC", sans-serif;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(2rem, 6vw, 3.1rem); margin: 0 0 0.4rem; }
+
+h2 { font-size: 1.45rem; margin: 2rem 0 0.6rem; }
+
+h3 { font-size: 1.12rem; margin: 1.4rem 0 0.4rem; }
+
+.lede { font-size: 1.2rem; }
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  margin: 1rem 0;
+}
+
+.notice {
+  background: var(--warn-bg);
+  border-color: #ead7c4;
+  color: var(--warn);
+}
+
+ul, ol { padding-left: 1.2rem; }
+
+li + li { margin-top: 0.35rem; }
+
+.lang {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.meta { color: var(--muted); font-size: 0.95rem; }
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-family: "Avenir Next", "PingFang SC", "Noto Sans SC", sans-serif;
+  font-size: 0.95rem;
+}
+
+code {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 40rem) {
+  .banner .wrap,
+  .site-footer .wrap { align-items: flex-start; }
+  body { font-size: 1.05rem; }
+}

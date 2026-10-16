@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="X-NEED 是以需求为起点的服务交易平台。内部关键词研究尚未完成 Google Ads API 调用验证，不是向公众开放的功能。">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <link rel="canonical" href="https://xneed.net/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <title>X-NEED</title>
+</head>
+<body>
+  <a class="skip" href="#content">跳到正文</a>
+  <header class="banner">
+    <div class="wrap">
+      <a class="brand" href="/">X-NEED</a>
+      <nav aria-label="页面">
+        <a href="/" aria-current="page">首页</a>
+        <a href="/privacy/">隐私政策</a>
+        <a href="/terms/">服务条款</a>
+      </nav>
+    </div>
+  </header>
+  <main id="content">
+    <article class="wrap">
+      <p class="meta">应用名称：X-NEED</p>
+      <h1>X-NEED</h1>
+      <p class="lede">X-NEED 是以需求为起点的服务交易平台。同一个人或企业可以在不同需求上分别作为需求方、解决方或参与者。它不是按商品目录陈列、由顾客直接下单的传统商城。</p>
+      <p>平台的设计是：需求方发布一项真实需求，解决方提出完成这项需求的方案，平台在双方之间执行匹配，并控制形成交易前的关键门禁。公开的交易产品仍在建设中。本网站不提供注册、不收款、不撮合订单，也不能在这里创建需求或方案。</p>
+
+      <section class="panel" id="google-ads-tool">
+        <h2>内部关键词研究</h2>
+        <p>关键词研究是运营 X-NEED 时准备使用的内部市场研究手段，用来了解哪些词语有搜索需求。它不是向公众提供的关键词查询产品，也不是已经开放的平台功能。</p>
+        <p>计划中的做法是：运营者使用自己的 Google Ads 账户，调用 Google 官方 Google Ads API 的 <code>KeywordPlanIdeaService.GenerateKeywordHistoricalMetrics</code>。对一批关键词，计划读取：</p>
+        <ul>
+          <li>平均每月搜索量</li>
+          <li>按月的历史搜索量</li>
+          <li>竞争度和竞争指数</li>
+          <li>页首出价区间和平均 CPC</li>
+          <li>按国家或地区查询时，对应地区的上述指标</li>
+        </ul>
+        <p>截至 2026-10-17，本项目没有该方法已经调用成功的记录，也没有由该方法生成的 CSV 或 JSON。这项内部能力仍在准备中，实际 API 调用尚未验证。</p>
+        <p>2026-10-16 做过一次关键词数据测试。测试交给第三方 Apify Actor 运行。返回的每条记录都标记为 <code>keyword_database</code>。这次测试不能当作 Google Ads 官方 API 的实时结果，测试中的数字也不在本网站公布。</p>
+        <p>这项尚未完成验证的内部能力，设计上不创建、不修改、不暂停、不启用广告系列、广告组、广告、预算或付款设置，也不替其他企业投放或管理广告。本网站不放置 Google 登录按钮。访问者不会被要求授权 Google 账户。</p>
+        <h3>为什么可能请求 Google 用户数据</h3>
+        <p>若这项内部能力将来实际调用 Google Ads API，API 只有在能够访问运营者自己的 Google Ads 账户的 Google 账号完成授权后，才会返回上述 Keyword Planner 历史指标。为此准备请求的 Google 范围只有 <code>https://www.googleapis.com/auth/adwords</code>。该范围不覆盖 Gmail、云端硬盘、日历或 YouTube。当前没有证据表明这一授权和调用已经成功。</p>
+        <p>已经发生的测试、计划中的处理，以及仍待确认的事项，写在 <a href="/privacy/">隐私政策</a>。使用本网站的条件写在 <a href="/terms/">服务条款</a>。</p>
+      </section>
+
+      <section>
+        <h2>本网站的范围</h2>
+        <p>xneed.net 是 X-NEED 的公开身份页面，用来说明品牌，以及运营者准备中的内部关键词研究打算如何使用 Google 用户数据。网站尚未部署。域名登记地的公开 WHOIS 记录显示登记人位于中国江苏省。</p>
+        <p>X-NEED 不是 Google，也不是 Google Ads。Google Ads 和 Keyword Planner 是 Google 的产品。</p>
+      </section>
+
+      <section class="lang" lang="en">
+        <h2>English</h2>
+        <p class="meta">Application name: X-NEED</p>
+        <p class="lede">X-NEED is a service transaction platform that starts from a need. The same person or business can act as the requester, the solver, or a participant on different needs. It is not a conventional store that lists goods for direct checkout.</p>
+        <p>The platform is designed so that a requester publishes a real need, a solver proposes how to fulfill it, and the platform matches the parties and controls the gates that must pass before a transaction is formed. The public transaction product is still being built. This website does not offer registration, take payment, match orders, or accept needs and solutions.</p>
+        <h3>Internal keyword research</h3>
+        <p>Keyword research is an internal market-research method being prepared for operating X-NEED. It is not a keyword-lookup product offered to the public, and it is not a platform feature that is already open.</p>
+        <p>The planned method is for the operator to use the operator's own Google Ads account and call the official Google Ads API method <code>KeywordPlanIdeaService.GenerateKeywordHistoricalMetrics</code>. For a batch of keywords, the plan is to read average monthly searches, monthly search history, competition and competition index, the top-of-page bid range, average CPC, and the same metrics for a country or region when that geography is requested.</p>
+        <p>As of 17 October 2026, this project has no record that the method has been called successfully, and it has no CSV or JSON produced by that method. The internal capability is still being prepared. The live API call has not been verified.</p>
+        <p>On 16 October 2026 a keyword-data test was run through a third-party Apify Actor. Every returned record was labeled <code>keyword_database</code>. That test is not a live result from the official Google Ads API, and its figures are not published on this website.</p>
+        <p>The unfinished internal capability is designed so that it does not create, change, pause, or enable campaigns, ad groups, ads, budgets, or billing settings, and it does not run or manage advertising for other businesses. This website has no Google sign-in button. Visitors are not asked to authorize a Google account.</p>
+        <h3>Why Google user data may be requested</h3>
+        <p>If this internal capability later calls the Google Ads API, the API returns those Keyword Planner historical metrics only after a Google account that can access the operator's own Google Ads account authorizes the call. The only Google scope prepared for that request is <code>https://www.googleapis.com/auth/adwords</code>. That scope does not include Gmail, Drive, Calendar, or YouTube. There is no evidence that this authorization and call have succeeded.</p>
+        <p>The test that already happened, the planned handling, and the items that remain unconfirmed are in the <a href="/privacy/">privacy policy</a>. Conditions for using this website are in the <a href="/terms/">terms of service</a>.</p>
+        <p>xneed.net is the public identity page for X-NEED. The website is not deployed yet. Public WHOIS shows the registrant in Jiangsu, China. X-NEED is not Google and is not Google Ads.</p>
+      </section>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>X-NEED · xneed.net · 2026-10-17</span>
+      <nav aria-label="页脚">
+        <a href="/privacy/">隐私政策</a>
+        <a href="/terms/">服务条款</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

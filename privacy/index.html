@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="X-NEED 隐私政策：分开说明尚未部署的网站、2026-10-16 的 Apify 测试，以及尚未验证的 Google Ads API 内部研究。">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <link rel="canonical" href="https://xneed.net/privacy/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <title>隐私政策 · X-NEED</title>
+</head>
+<body>
+  <a class="skip" href="#content">跳到正文</a>
+  <header class="banner">
+    <div class="wrap">
+      <a class="brand" href="/">X-NEED</a>
+      <nav aria-label="页面">
+        <a href="/">首页</a>
+        <a href="/privacy/" aria-current="page">隐私政策</a>
+        <a href="/terms/">服务条款</a>
+      </nav>
+    </div>
+  </header>
+  <main id="content">
+    <article class="wrap">
+      <h1>隐私政策</h1>
+      <p class="meta">应用名称：X-NEED · 生效日期：2026-10-17 · 版本：2026-10-17.3</p>
+      <p>本政策分开说明三件事：访问这个尚未部署的网站时会发生什么；2026-10-16 一次第三方关键词测试实际处理了什么；计划中的 Google Ads API 内部研究准备处理什么。未能从现有代码、配置和记录中确认的事项，标明为待确认，不写成已经发生的事实。</p>
+
+      <section>
+        <h2>1. 运营者</h2>
+        <p>运营者是域名 xneed.net 的登记人。公开 WHOIS 显示登记人位于中国江苏省。本政策不使用另一家公司的名称，因为这里没有另列一个已经核验的法律名称。</p>
+        <p>若某个 Google 账号日后授权了相关访问，该账号持有人可以在 <a href="https://myaccount.google.com/permissions">Google 账号的第三方访问权限页面</a>撤销访问。该页面只能撤销授权，不能把删除请求发给 X-NEED。xneed.net 目前没有公开邮箱，说明写在本政策末尾。当前没有证据表明 Google Ads API 的授权和关键词历史指标调用已经成功。</p>
+      </section>
+
+      <section>
+        <h2>2. 本网站收集什么</h2>
+        <p>本网站是静态页面。它不设置 Cookie，不提供账号，不嵌入分析脚本、广告脚本或外部字体。页面不要求访问者登录，也不请求访问者的 Google 账号。</p>
+        <p>网站尚未部署。页面上不公布关键词研究结果。部署之后，托管商可能为了运行和安全记录访问者的 IP 地址、请求时间和浏览器标识。若使用 GitHub Pages，GitHub 的公开说明是：无论访客是否登录 GitHub，都会记录并保存 IP 地址用于安全。本政策不把保存天数写成一个尚未核验的数字。X-NEED 不另建访客数据库，也不把访问日志用于广告或出售。</p>
+      </section>
+
+      <section>
+        <h2>3. 已经发生的测试</h2>
+        <p>2026-10-16，运营者通过第三方 Apify Actor 做过一次关键词数据测试。提交给 Apify 的输入要求使用 Google Ads 实时来源。返回的每条记录都标记为 <code>keyword_database</code>。因此，这次测试不能称为本项目通过 Google Ads 官方 API 取得的实时数据，也不能证明 <code>KeywordPlanIdeaService.GenerateKeywordHistoricalMetrics</code> 已经调用成功。</p>
+        <p>本地保存的返回记录包含关键词文本、搜索量、按月搜索量、竞争度、竞争指数、CPC、页首出价区间，以及 Actor 另外给出的关键词难度和搜索意图等字段。这些记录目前仍留在运营者的本地项目文件中。它们没有发布在本网站上，也没有由这次官方 API 调用生成 CSV。本项目里没有找到由 <code>GenerateKeywordHistoricalMetrics</code> 生成的 CSV 或 JSON。</p>
+        <p>这次查询发往 Apify。不能把这次测试写成“数据只发送给 Google”。返回记录的标记也不能证明 Apify 随后向 Google 取得了实时广告数据。Apify 是否继续保存或向其他人提供该次运行的数据：待确认。</p>
+      </section>
+
+      <section>
+        <h2>4. 计划中且尚未验证的处理</h2>
+        <p>关键词研究是运营 X-NEED 的内部市场研究手段，不是向公众开放的产品功能。计划中的做法是：运营者使用自己的 Google Ads 账户，调用 <code>KeywordPlanIdeaService.GenerateKeywordHistoricalMetrics</code>，读取 Keyword Planner 历史指标，包括被查询的关键词文本、Google 返回的紧密变体、平均每月搜索量、按月的历史搜索量、竞争度与竞争指数、页首出价的低位和高位、平均 CPC，以及查询指定国家或地区时的对应指标。</p>
+        <p>该计划准备请求的 Google OAuth 范围只有 <code>https://www.googleapis.com/auth/adwords</code>。这个范围按其设计不读取 Gmail 邮件、Google 云端硬盘文件、日历、YouTube 内容或 Google 账号通讯录，也不访问其他企业委托管理的广告账户。现有项目代码里没有这项调用的实现。同意屏幕上实际配置的范围尚未核对，标为待确认。若实际请求的范围或数据与本节不同，运营者必须先更新本政策，再继续。</p>
+        <p>这些计划中的数据只准备用于 X-NEED 自己的产品与市场用语研究。设计边界是不用于创建、修改、暂停或启用广告系列、广告组、广告、预算或付款设置，不用于替他人投放广告，不用于向任何人重新定向广告，也不用于信用评估、就业、住房或出售。这是计划中的边界，不是一项已经运行的功能。</p>
+      </section>
+
+      <section>
+        <h2>5. 待确认</h2>
+        <p>下列事项不能从现有代码、配置和记录中确认。本政策不猜测它们的答案。</p>
+        <ul>
+          <li>Google Ads OAuth 授权是否曾经成功完成。</li>
+          <li>是否已经保存 OAuth 刷新令牌。</li>
+          <li>是否已经保存 Google Ads 客户编号。</li>
+          <li>2026-10-16 的 Apify 测试是否使用了运营者的 Google 账号授权。</li>
+          <li>Apify 对该次运行的保留期限和后续共享。</li>
+          <li>同意屏幕上实际显示的应用名称和实际请求的范围。</li>
+          <li>除运营者本人以外，是否还有人能够读取本地测试文件。</li>
+        </ul>
+        <p>运营者的计算机上存有一份 Google OAuth 客户端配置。本政策不公布其中的标识或密钥。仅有这份配置，不能证明授权已经完成，也不能证明 API 已经调用。</p>
+      </section>
+
+      <section>
+        <h2>6. 保存</h2>
+        <p>2026-10-16 的测试记录目前仍保存在本地项目文件中，不在本网站页面上显示。本项目没有实现自动删除这些文件的程序。</p>
+        <p>刷新令牌和 Google Ads 客户编号是否已经另存：待确认。本政策不记录它们的值，也不声称它们已经按某一流程保存或删除。</p>
+        <p>网站尚未部署，因此目前没有本网站自己的访问日志。若将来部署，访问日志按第 2 节由托管商保存。静态页面不包含关键词结果。</p>
+      </section>
+
+      <section>
+        <h2>7. 与谁共享</h2>
+        <p>X-NEED 不出售 Google 用户数据，也不把关键词结果放在本网站上提供给访问者。</p>
+        <p>2026-10-16 的测试查询发送给了 Apify。计划中的官方 API 查询才会发送给 Google。在官方调用得到验证之前，本政策不把任何关键词结果描述成已经只发送给 Google。</p>
+        <p>对于将来实际从 Google API 收到的信息，为调查滥用而保护安全，或为遵守适用法律而必须披露时，可以按该必要范围披露。作为合并、收购或资产出售的一部分转移这些数据之前，必须先取得授权用户的明确同意。这是适用规则，不是一项已经执行过的转移。</p>
+      </section>
+
+      <section>
+        <h2>8. Limited Use</h2>
+        <p>X-NEED 对从 Google API 实际收到的信息，其使用和向其他应用的转移，将遵守 <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>，包括其中的 Limited Use 要求。写下这段规则，并不表示该 API 调用已经成功，也不能代替尚未实现的访问控制或删除程序。</p>
+        <p>在真正收到 Google API 信息之后，这些信息只准备用于向授权账号提供首页所写的内部关键词历史指标研究。不向其他人转移，除非为提供该研究并已经取得用户同意、为安全目的调查滥用、为遵守适用法律，或在合并、收购或出售资产时已经事先取得用户的明确同意。计划中的读者是发出授权的运营者本人。本政策不声称已经有一套措施阻止其他人阅读原始数据。这些信息不用来投放广告，包括再营销或按兴趣投放，也不出售，也不用来判断信用或放贷。2026-10-16 标记为 <code>keyword_database</code> 的记录，在来源得到确认之前，不写成已经从 Google API 收到的用户数据。</p>
+      </section>
+
+      <section>
+        <h2>9. 撤销与删除</h2>
+        <p>授权账号的持有人可以在 <a href="https://myaccount.google.com/permissions">https://myaccount.google.com/permissions</a> 撤销一项已经存在的访问。当前没有证据表明这项 Google Ads API 授权已经成功。撤销本身也不会自动擦除已经下载的文件。</p>
+        <p>本项目没有自动删除程序。若今后产生刷新令牌、客户编号或官方 API 结果文件，运营者承诺删除对应的本地副本。这是承诺，不是一项已经写好的功能。2026-10-16 的测试记录尚未按该承诺删除，它们仍然留在本地。</p>
+        <p>本网站没有可登录的用户数据库，因此没有可在线删除的网站账号。在公布一个确有人阅读的邮箱之前，其他人不能通过本网站把删除请求送达运营者。</p>
+      </section>
+
+      <section>
+        <h2>10. 儿童</h2>
+        <p>本网站不以 13 岁以下儿童为对象，也不明知地收集儿童的个人信息。计划中的内部研究同样不以儿童为对象。</p>
+      </section>
+
+      <section>
+        <h2>11. 政策变更</h2>
+        <p>运营者更新本页并改动上面的生效日期。对 Google 用户数据的使用不会超出当时公布的政策。本网站目前不提供注册或可登录的服务。</p>
+      </section>
+
+      <section class="panel notice" id="contact">
+        <h2>12. 联系</h2>
+        <p>xneed.net 目前没有已开通、可接收邮件的公开邮箱。本政策不刊登一个无人接收的地址。</p>
+        <p><a href="https://myaccount.google.com/permissions">Google 账号权限页面</a>只能撤销一项已经存在的授权。它不能把信件发给 X-NEED，也不能代替删除本地文件。</p>
+      </section>
+
+      <section class="lang" lang="en">
+        <h2>Privacy policy in English</h2>
+        <p class="meta">Application name: X-NEED. Effective 17 October 2026. Version 2026-10-17.3.</p>
+        <p>This policy separates three things: what happens when someone visits this website, which is not deployed yet; what a third-party keyword test on 16 October 2026 actually processed; and what the planned Google Ads API internal research is being prepared to process. Where the existing code, configuration, and records do not confirm a point, this policy marks it unconfirmed and does not state it as a fact.</p>
+        <h3>1. Operator</h3>
+        <p>The operator is the registrant of xneed.net. Public WHOIS places the registrant in Jiangsu, China. This policy does not substitute another company's name, because no separate verified legal name is stated here.</p>
+        <p>If a Google account later grants the relevant access, that account holder can revoke it on the <a href="https://myaccount.google.com/permissions">Google Account third-party access page</a>. That page revokes the grant. It does not deliver a deletion request to X-NEED. xneed.net has no public mailbox, as the end of this policy states. There is no evidence that a Google Ads API authorization and a keyword historical-metrics call have succeeded.</p>
+        <h3>2. What this website collects</h3>
+        <p>This website is static. It sets no cookies, offers no accounts, and embeds no analytics, advertising scripts, or external fonts. It does not ask visitors to sign in or to authorize a Google account.</p>
+        <p>The website is not deployed yet. The pages do not publish keyword-research results. After deployment, the host may log a visitor's IP address, request time, and browser identifier for operations and security. If the host is GitHub Pages, GitHub's public documentation says that the visitor's IP address is logged and stored for security whether or not the visitor is signed in to GitHub. This policy does not state a retention period that has not been verified. X-NEED does not build a separate visitor database, and it does not use access logs for advertising or sell them.</p>
+        <h3>3. The test that already happened</h3>
+        <p>On 16 October 2026 the operator ran a keyword-data test through a third-party Apify Actor. The input sent to Apify asked for a live Google Ads source. Every returned record was labeled <code>keyword_database</code>. That test is not live data obtained by this project through the official Google Ads API, and it does not show that <code>KeywordPlanIdeaService.GenerateKeywordHistoricalMetrics</code> has been called successfully.</p>
+        <p>The returned records kept locally include keyword text, search volume, monthly searches, competition, competition index, CPC, the top-of-page bid range, and extra fields supplied by the Actor such as keyword difficulty and search intent. Those records are still in the operator's local project files. They are not published on this website. This project does not contain a CSV or JSON produced by <code>GenerateKeywordHistoricalMetrics</code>.</p>
+        <p>That query was sent to Apify. The test cannot be described as data sent only to Google. The label on the returned records also does not prove that Apify then obtained live advertising data from Google. Whether Apify still stores that run or shares it further is unconfirmed.</p>
+        <h3>4. Planned handling that is not yet verified</h3>
+        <p>Keyword research is an internal market-research method for operating X-NEED. It is not a product feature open to the public. The plan is that the operator uses the operator's own Google Ads account and calls <code>KeywordPlanIdeaService.GenerateKeywordHistoricalMetrics</code> to read Keyword Planner historical metrics: the keyword text, close variants returned by Google, average monthly searches, monthly search volumes, competition and competition index, low and high top-of-page bids, average CPC, and the same figures for a country or region when the query names one.</p>
+        <p>The only Google OAuth scope this plan is prepared to request is <code>https://www.googleapis.com/auth/adwords</code>. As designed, that scope does not read Gmail, Google Drive, Calendar, YouTube, or Google contacts, and it does not access advertising accounts that other businesses have asked X-NEED to manage. The current project code does not implement this call. The scopes actually configured on the consent screen have not been checked and are unconfirmed. If the scopes or data actually requested differ from this section, the operator will update this policy before continuing.</p>
+        <p>The planned data is intended only for X-NEED's own product and market-language research. The design boundary is that it is not used to create, change, pause, or enable campaigns, ad groups, ads, budgets, or billing settings, to advertise for anyone else, to retarget people, to assess credit, employment, or housing, or to sell data. That is a planned boundary, not a feature that is already running.</p>
+        <h3>5. Unconfirmed</h3>
+        <p>The following points cannot be confirmed from the existing code, configuration, and records. This policy does not guess the answers.</p>
+        <ul>
+          <li>Whether a Google Ads OAuth grant has ever succeeded.</li>
+          <li>Whether an OAuth refresh token is stored.</li>
+          <li>Whether a Google Ads customer ID is stored.</li>
+          <li>Whether the 16 October 2026 Apify test used the operator's Google account authorization.</li>
+          <li>Apify's retention period and any further sharing of that run.</li>
+          <li>The application name and scopes actually shown on the consent screen.</li>
+          <li>Whether anyone other than the operator can read the local test files.</li>
+        </ul>
+        <p>A Google OAuth client configuration is stored on the operator's computer. This policy does not publish its identifiers or secrets. That configuration alone does not show that authorization is complete or that the API has been called.</p>
+        <h3>6. Storage</h3>
+        <p>The 16 October 2026 test records are still stored in local project files and are not shown on this website. This project has no program that deletes those files automatically.</p>
+        <p>Whether a refresh token and a Google Ads customer ID are stored separately is unconfirmed. This policy does not record their values and does not claim that they have been saved or deleted by a stated procedure.</p>
+        <p>The website is not deployed, so it has no access logs of its own. If it is deployed later, the host would keep access logs as section 2 describes. The static pages do not contain keyword results.</p>
+        <h3>7. Sharing</h3>
+        <p>X-NEED does not sell Google user data and does not place keyword results on this website for visitors.</p>
+        <p>The 16 October 2026 test query was sent to Apify. A query to Google would be the planned official API call. Until that official call is verified, this policy does not describe any keyword result as having been sent only to Google.</p>
+        <p>For information later received from Google APIs, disclosure is allowed when it is necessary to investigate abuse or to comply with applicable law, and only to that extent. A transfer as part of a merger, acquisition, or sale of assets happens only after the authorizing user gives explicit prior consent. These are the rules that would apply. They are not a transfer that has already been carried out.</p>
+        <h3>8. Limited Use</h3>
+        <p>X-NEED's use and transfer to any other app of information actually received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. Stating this rule does not mean the API call has succeeded, and it does not stand in for access controls or a deletion program that have not been built.</p>
+        <p>After Google API information is actually received, it is intended only to provide the authorizing account with the internal keyword historical-metrics research described on the home page. It is not transferred to others except to provide that research with the user's consent, for security purposes such as investigating abuse, to comply with applicable law, or as part of a merger, acquisition, or sale of assets after explicit prior consent from the user. The intended reader is the operator who gave the authorization. This policy does not claim that a control already prevents other people from reading raw data. The information is not used to serve ads, including retargeting or interest-based advertising. X-NEED does not sell Google user data and does not use it to determine credit-worthiness or for lending. Records labeled <code>keyword_database</code> on 16 October 2026 are not described as user data already received from a Google API until their source is confirmed.</p>
+        <h3>9. Revocation and deletion</h3>
+        <p>The holder of an authorizing account can revoke an existing grant at <a href="https://myaccount.google.com/permissions">https://myaccount.google.com/permissions</a>. There is no evidence that this Google Ads API grant has succeeded. Revocation does not by itself erase files already downloaded.</p>
+        <p>This project has no automatic deletion program. If a refresh token, a customer ID, or official API result files are created later, the operator commits to deleting the corresponding local copies. That is a commitment, not a feature that already exists. The 16 October 2026 test records have not been deleted under that commitment. They are still stored locally.</p>
+        <p>This website has no sign-in database and therefore no website account to delete online. Until a monitored mailbox is published, other people cannot deliver a deletion request to the operator through this website.</p>
+        <h3>10. Children</h3>
+        <p>This website is not directed to children under 13, and it does not knowingly collect personal information from children. The planned internal research is not directed to children either.</p>
+        <h3>11. Changes</h3>
+        <p>The operator updates this page and the effective date above. Use of Google user data will not go beyond the policy published at the time. This website does not currently offer registration or a sign-in service.</p>
+        <h3>12. Contact</h3>
+        <p>xneed.net does not yet have a monitored public mailbox. This policy does not publish an address that nobody reads.</p>
+        <p>The <a href="https://myaccount.google.com/permissions">Google Account permissions page</a> only revokes a grant that already exists. It does not send a message to X-NEED, and it does not delete local files.</p>
+      </section>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>X-NEED · xneed.net · 2026-10-17</span>
+      <nav aria-label="页脚">
+        <a href="/privacy/">隐私政策</a>
+        <a href="/terms/">服务条款</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
